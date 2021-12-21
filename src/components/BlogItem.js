@@ -34,10 +34,10 @@ function BlogItem(props){
       <div class="card-body">
         {/* <h5 class="card-title">Special title treatment</h5> */}
         <p class="card-text">{props.blog.body}</p>
-        <button class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal">Edit</button> 
+        <button class="btn btn-primary"  data-toggle="modal" data-target={`#exampleModal${props.blog.id}`}>Edit</button> 
         <button class='btn btn-danger deleteButton' onClick={() => onDelete()} >Delete</button>
       </div>
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id={`exampleModal${props.blog.id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -62,7 +62,7 @@ function BlogItem(props){
               <input type="text" class="form-control" placeholder="Article Author" value={author} onChange={(e) =>handleAuthor(e)}/>
              
             </div>
-            <button class="btn btn-primary" onClick={() =>onEdit()}>Save</button>
+            <button class="btn btn-primary"  data-dismiss="modal" onClick={() =>onEdit()}>Save</button>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

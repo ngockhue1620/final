@@ -1,37 +1,9 @@
 import './App.css';
 import React from 'react'
 import BlogItem from './components/BlogItem'
+import axios from 'axios'
 function App() {
-  const [listBlog, setListBlog] = React.useState(    
-    [
-      {
-        
-        title: "Title1",
-        body: "Body1",
-        author: "author1",
-        id: 1
-      },
-    
-      {
-        
-        title: "Title2",
-        body: "Body2",
-        author: "author2",
-        id: 2
-      },{
-        
-        title: "Title3",
-        body: "Body3",
-        author: "author3",
-        id: 3
-      },{
-        
-        title: "Title4",
-        body: "Body4",
-        author: "author4",
-        id: 4
-      }
-    ])
+  const [listBlog, setListBlog] = React.useState([])
   const [title,setTitle] = React.useState('')
   const [author,setAuthor] = React.useState('')
   const [body,setBody] = React.useState('')
@@ -72,6 +44,13 @@ function App() {
     temp.push(value)
     setListBlog(temp)
   }
+  const fetchApi = async () => {
+    const result = await axios.get('http://localhost:8081/blogs')
+    setListBlog(result.data)
+  }
+  React.useEffect(()=>{
+    fetchApi()
+  }, [])
   return (
     <div class="container">
       <button class="btn tn-primary d-flex justify-content-end"  data-toggle="modal" data-target="#exampleModalAdd">Thêm Mới</button>
