@@ -75,7 +75,7 @@ function App() {
   return (
     <div class="container">
       <button class="btn tn-primary d-flex justify-content-end"  data-toggle="modal" data-target="#exampleModalAdd">Thêm Mới</button>
-      <div class="view">
+      <div>
         { listBlog.map((item, index) => <BlogItem blog={item} key={index} updateBlog={updateBlog} deleteBlog={deleteBlog} /> )}      
       </div>
       <div class="modal fade" id="exampleModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -103,7 +103,7 @@ function App() {
               <input type="text" class="form-control" placeholder="Article Author" value={author} onChange={(e) =>handleAuthor(e)}/>
              
             </div>
-            <button class="btn btn-primary" onClick={() =>onSave()}>Save</button>
+            <button class="btn btn-primary" onClick={() =>onSave()} data-dismiss="modal">Save</button>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
