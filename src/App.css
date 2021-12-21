@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.blogItem {
+  margin: 2rem;
+}
+.deleteButton {
+  margin-left: 5px ;
+}
+.view {
+  display: flex;
+  flex-wrap: wrap;
+}
